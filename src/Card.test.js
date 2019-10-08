@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import STORE from './STORE';
-import List from './List';
+import Card from './Card';
 import renderer from 'react-test-renderer';
 
 
-describe('List Tests', () => {
+describe('Card Tests', () => {
   //smoke test
   it('render with prop', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<List 
-      key = {STORE.lists[0].id}
-      header = {STORE.lists[0].header}
-      cards = {STORE.lists[0].cardIds}
+    ReactDOM.render(<Card 
+      key = {STORE.allCards.a.id}
+      title = {STORE.allCards.a.title}
+      content = {STORE.allCards.a.content}
     />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
@@ -21,10 +21,10 @@ describe('List Tests', () => {
   //snapshot test
   it('renders the UI as expected', () => {
     const tree = renderer
-      .create(<List 
-        key = {STORE.lists[0].id}
-        header = {STORE.lists[0].header}
-        cards = {STORE.lists[0].cardIds}
+      .create(<Card 
+        key = {STORE.allCards.a.id}
+        title = {STORE.allCards.a.title}
+        content = {STORE.allCards.a.content}
       />)
       .toJSON();
       expect(tree).toMatchSnapshot();
